@@ -11,9 +11,9 @@ const axiosCancel = new AxiosCanceler();
  */
 export default function AuthRouter(props : { children: JSX.Element }) {
     const { pathname } = useLocation();
-    console.log("AuthRouter: pathname", pathname);
+    // console.log("AuthRouter: pathname", pathname);
     const route = searchRoute(pathname, rootRouter);
-    console.log("AuthRouter: route", route);
+    // console.log("AuthRouter: route", route);
     // * 清除请求
     axiosCancel.removeAllPending();
 
@@ -26,7 +26,7 @@ export default function AuthRouter(props : { children: JSX.Element }) {
 
     // * 动态路由（根据后端返回的菜单数据生成）
     const dynamicRouter = store.getState().auth.authRouter;
-    console.log("dynamicRouter", dynamicRouter);///////////
+    // console.log("dynamicRouter", dynamicRouter);
     // * 静态路由
     const staticRouter = ["/home/index", "/403"];
     const routerList = dynamicRouter.concat(staticRouter);

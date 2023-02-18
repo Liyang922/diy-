@@ -22,9 +22,9 @@ const AddItemModal = (props: any) => {
                             // 将表单数据values通过onCreate传给父组件
                             const processedValues = {
                                 ...values,
-                                'ideaDate': values['ideaDate'] ? values['ideaDate'].format('YYYY-MM') : values['planDate'],
+                                'ideaDate': values['ideaDate'] ? values['ideaDate'].format('YYYY-MM') : values['ideaDate'],
                                 'planDate': values['planDate'] ? values['planDate'].format('YYYY-MM') : values['planDate'],
-                                'doneDate': values['doneDate'] ? values['doneDate'].format('YYYY-MM') : values['planDate'],
+                                'doneDate': values['doneDate'] ? values['doneDate'].format('YYYY-MM') : values['doneDate'],
                             }
                             onCreate(processedValues);
                         })

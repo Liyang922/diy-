@@ -12,7 +12,7 @@ for (const path in metaRouters) {
     const mod : any = await metaRouters[path]();
     routeArr.push(mod.default);
 }
-console.log("routeArr", routeArr);
+// console.log("routeArr", routeArr);
 
 export const rootRouter : RouteObject[] = [
     {

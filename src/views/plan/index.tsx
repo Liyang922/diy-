@@ -1,14 +1,20 @@
 import { connect } from "react-redux";
 import CardComponent from "../comoponents/Card";
 import { setItemList, addItem, setItem } from "../../redux/modules/item/action";
+import "./index.less";
+
 
 function Plan(props: any) {
     const { itemList } = props; 
     // console.log("itemList", itemList);
     return (
-        itemList.map((item : any, index : any) => {
-            if(item.status == "plan") return <CardComponent item={item} key={index} />
-        })
+        <div className="card-display">
+            {
+                itemList.map((item : any, index : any) => {
+                    if(item.status == "plan") return <CardComponent item={item} key={index} />
+                })
+            }
+        </div>
     );
 }
 

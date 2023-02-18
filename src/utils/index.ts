@@ -25,12 +25,12 @@ export const getBrowserLang = () => {
  * @returns 对应路由对象
  */
 export function searchRoute (path: string, routes: RouteObject[] = []) : RouteObject {
-    console.log("searchRoute接收到的rootRouter", routes);
+    // console.log("searchRoute接收到的rootRouter", routes);
     let result : RouteObject = {};
     for(const item of routes) {
         // console.log("item of routes", item);
         if(item.path == path) {
-            console.log("item.path == path", item);
+            // console.log("item.path == path", item);
             return item;
         }
         if(item.children) {
@@ -108,7 +108,7 @@ export function findAllBreadcrumb(menuList: Menu.MenuOptions[]): { [key: string]
  * @returns array
  */
 export const getOpenKeys = (path: string) => {
-    console.log("getOpenKeys的参数:", path);
+    // console.log("getOpenKeys的参数:", path);
 	let newStr = "";
 	const newArr = [];
 	const arr = path.split("/").map(i => "/" + i); //pathname:"/menu/menu2/menu22/menu221"
@@ -116,7 +116,7 @@ export const getOpenKeys = (path: string) => {
 		newStr += arr[i];
 		newArr.push(newStr);
 	}
-    console.log("getOpenKeys的返回值:", newArr);
+    // console.log("getOpenKeys的返回值:", newArr);
 	return newArr; // ['/menu', '/menu/menu2', '/menu/menu2/menu22']
 };
 

@@ -18,9 +18,9 @@ const ItemInfoModal = (props: any) => {
                             // 将表单数据values通过onCreate传给父组件
                             const processedValues = {
                                 ...values,
-                                'ideaDate': values['ideaDate'] ? values['ideaDate'].format('YYYY-MM') : values['planDate'],
-                                'planDate': values['planDate'] ? values['planDate'].format('YYYY-MM') : values['planDate'],
-                                'doneDate': values['doneDate'] ? values['doneDate'].format('YYYY-MM') : values['planDate'],
+                                'ideaDate': values['ideaDate'] ? values['ideaDate'].format('YYYY-MM') : "",
+                                'planDate': values['planDate'] ? values['planDate'].format('YYYY-MM') : "",
+                                'doneDate': values['doneDate'] ? values['doneDate'].format('YYYY-MM') : "",
                             }
                             onCreate(processedValues);
                         })
@@ -80,19 +80,19 @@ const ItemInfoModal = (props: any) => {
                     label="点子创建日期（年-月）"
                     name="ideaDate"
                 >
-                    <DatePicker picker="month" />
+                    <DatePicker picker="month" style={{width:"100%"}} placeholder="注意！空日期将覆盖原有数据！"/>
                 </Form.Item>
                 <Form.Item
                     label="点子计划完成日期（年-月）"
                     name="planDate"
                 >
-                    <DatePicker picker="month" />
+                    <DatePicker picker="month" style={{width:"100%"}} placeholder="注意！空日期将覆盖原有数据！"/>
                 </Form.Item>
                 <Form.Item
                     label="点子完成日期（年-月）"
                     name="doneDate"
                 >
-                    <DatePicker picker="month" />
+                    <DatePicker picker="month" style={{width:"100%"}} placeholder="注意！空日期将覆盖原有数据！"/>
                 </Form.Item>
             </Form>
 		</Modal>

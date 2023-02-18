@@ -1,5 +1,7 @@
+import React from "react";
 import { RouteObject } from "../interface";
 import { LayoutIndex } from "../constant";
+// import lazyLoad from "../utils/lazyLoad";
 import Home from "../../views/home";
 
 // 首页路由表
@@ -8,6 +10,7 @@ const homeRouter : RouteObject = {
     children: [
         {
             path: "/home/index",
+            // element: lazyLoad(React.lazy(() => import("../../views/home"))),
             element: <Home />,
             meta: {
                 requiresAuth: true,

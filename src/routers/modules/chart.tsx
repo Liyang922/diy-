@@ -3,19 +3,19 @@ import { RouteObject } from "../interface";
 import { LayoutIndex } from "../constant";
 import lazyLoad from "../utils/lazyLoad";
 
-const planRouter : RouteObject = {
+const chartRouter : RouteObject = {
     element: <LayoutIndex />,
     children: [
         {
-            path: "/plan",
-            element: lazyLoad(React.lazy(() => import("../../views/plan"))),
+            path: "/chart",
+            element: lazyLoad(React.lazy(() => import("../../views/chart"))),
             meta: {
                 requiresAuth: true,
-                title: "计划中",
-                key: "plan"
+                title: "可视化",
+                key: "chart"
             }
         }
     ]
 };
 
-export default planRouter;
+export default chartRouter;

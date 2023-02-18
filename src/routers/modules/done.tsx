@@ -1,13 +1,14 @@
+import React from "react";
 import { RouteObject } from "../interface";
 import { LayoutIndex } from "../constant";
-import Done from "../../views/done";
+import lazyLoad from "../utils/lazyLoad";
 
 const doneRouter : RouteObject = {
     element: <LayoutIndex />,
     children: [
         {
             path: "/done",
-            element: <Done />,
+            element: lazyLoad(React.lazy(() => import("../../views/done"))),
             meta: {
                 requiresAuth: true,
                 title: "已完成",

@@ -5,14 +5,12 @@ import CardComponent from "../comoponents/Card";
 import { setItemList, addItem, setItem } from "../../redux/modules/item/action";
 import AddItemModal from "../comoponents/AddItemModal";
 import { nanoid } from "nanoid";
-import { getRenderItemList } from "../../utils";
+import "./index.less";
 
 function Idea(props: any) {
     const { itemList, addItem } = props; 
     // Modal是否显示
     const [open, setOpen] = useState(false);
-
-    const renderList = getRenderItemList(itemList, "idea");
 
     const handleAdd = () => {
         setOpen(true);
@@ -47,24 +45,15 @@ function Idea(props: any) {
             >
                 增加项
             </Button>
-            {/* List需要样式，List item的排版（2.14） */}
-            <List 
-                header={<div>Header</div>} //需要样式（2.14）
-                bordered
-                grid={{ gutter: 16, column: 3 }}
-                dataSource={itemList}
-                renderItem={item => {
-                    return (
-                        itemList.map((item : any, index : any) => {
-                            if(item.status == "idea") return (
-                                <List.Item>
-                                    <CardComponent item={item} key={index} />
-                                </List.Item>
-                            )
-                        })
-                    );
-                }}
-            ></List>
+            <div className="card-display">
+                {
+                    itemList.map((item : any, index : any) => {
+                        if(item.status == "idea") return (
+                            <CardComponent item={item} key={index} className="card"/>
+                        )
+                    })
+                }
+            </div>
             <AddItemModal
                 open={open}
                 onCreate={onCreate}

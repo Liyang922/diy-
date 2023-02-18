@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { setItemList, addItem, setItem, deleteItem } from "../../redux/modules/item/action";
-import { Avatar, Card, message } from 'antd';
+import { Avatar, Card, message, Descriptions } from 'antd';
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import ItemInfoModal from "./ItemInfoModal";
-import { nanoid } from "nanoid";
-const { Meta } = Card;
 
 function CardComponent(props: any) {
     const { item, setItem, deleteItem } = props;
@@ -26,11 +24,11 @@ function CardComponent(props: any) {
 
     const onCreate = (values : any) => {
         // 接收到form数据
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
         const correctValues = {...values, id: item.id};
         Object.keys(correctValues).forEach(key => {
             // 删除undefined数据
-            if(!correctValues[key]) delete correctValues[key];
+            if(correctValues[key] == undefined) delete correctValues[key];
             if(objProps.includes(key)) {
                 if(correctValues[key]) correctValues[key] = JSON.parse(correctValues[key]);
             }
@@ -52,15 +50,16 @@ function CardComponent(props: any) {
         deleteItem(item.id);
     }
 
+    const displayKey = ["description", "stockList", "ideaDate", "planDate", "doneDate"];
     return (
         <Card
             hoverable
             bordered
-            style={{ width: 300 }}
             cover={
                 <img
                     alt="example"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" //待修改（2.13）
+                    // src={itemImage}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                 />
             }
             actions={[
@@ -68,10 +67,16 @@ function CardComponent(props: any) {
                 <DeleteOutlined key="delete" onClick={handleDelte}/>
             ]}
         >
-            <Meta
-                title={`${item.name}`}
-                description={`${item.description}` + "|" + getStockDescription(item.stockList)}
-            />
+            <Descriptions title={`${item.name}`} column={1} size="small" style={{fontFamily:"PingFang SC",}}>
+                {
+                    Object.keys(item).map(key => {
+                        if(displayKey.includes(key) && item[key]) {
+                            if(key == "stockList") return <Descriptions.Item label={key} key={key}>{getStockDescription(item[key])}</Descriptions.Item>
+                            return <Descriptions.Item label={key} key={key} >{`${item[key]}`}</Descriptions.Item>
+                        }
+                    })
+                }
+            </Descriptions>
             <ItemInfoModal
                 open={open}
                 onCreate={onCreate}
