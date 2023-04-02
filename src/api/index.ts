@@ -1,6 +1,7 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 import { message } from "antd";
 import { checkStatus } from "./helper/checkStatus";
+import { showFullScreenLoading, tryHideFullScreenLoading } from "../config/serviceLoading";
 import { ResultData } from "./interface";
 import { AxiosCanceler } from "./helper/axiosCancel";
 import { store } from "../redux/store";
@@ -31,6 +32,8 @@ class RequestHtpp {
             (config: any) => { // AxiosRequestConfig-error
                 // 保存请求
                 axiosCanceler.addPending(config);
+                // * 如果当前请求不需要显示 loading,在api服务中通过指定的第三个参数: { headers: { noLoading: true } }来控制不显示loading，参见loginApi
+				config.headers!.noLoading || showFullScreenLoading();
                 // 从本地获取token，发送到服务器
                 const token: string = store.getState().global.token;
                 return {...config, headers: {...config.headers, "x-access-token": token}};
@@ -47,10 +50,8 @@ class RequestHtpp {
             (response: AxiosResponse) => {
                 const {data, config} = response;
                 
-                // 1.progress
-                // 2.axiosCancel的pending中移除
                 axiosCanceler.removePending(config);
-                // 3.loading移除
+                tryHideFullScreenLoading();
 
                 // 登录失效（code == 599）
                 if(data.code === 599) {
@@ -75,19 +76,16 @@ class RequestHtpp {
             (error: AxiosError) => {
                 const {response} = error;
                 // progress & loading
-
+                tryHideFullScreenLoading();
                 // 请求超时
                 if(error.message.includes("timeout")) message.error("请求超时，请稍后再试");
                 // 根据响应的错误状态码，分别处理
                 if(response) checkStatus(response.status);
-                return Promise.reject(error);
                 // 服务器没有返回结果，断网处理
                 if(!window.navigator.onLine) window.location.hash = "/500";
-                
                 return Promise.reject(error);
             }
         )
-
     }
 
     // 请求方法封装

@@ -23,7 +23,6 @@ export default defineConfig({
     // 代理跨域（mock 不需要配置，这里只是个事列）
     proxy: {
       "/api": {
-        // target: "https://mock.mengxuegu.com/mock/62abda3212c1416424630a45", // easymock
         target: "https://mock.mengxuegu.com/mock/63e6fca84b99657e29850711/stockmanage", // easymock
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, "")

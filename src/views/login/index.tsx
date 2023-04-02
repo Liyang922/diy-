@@ -9,7 +9,7 @@ export default function Login() {
     return (
         <div className="login-container">
             {/* 切换深浅模式组件 */}
-            <SwitchDark />
+            <SwitchDark />  
             <div className="login-box">
                 <div className="login-left">
                     <img src={loginLeft} alt="login"></img>

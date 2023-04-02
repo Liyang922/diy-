@@ -10,7 +10,7 @@ function Done(props: any) {
         <div className="card-display">
             {
                 itemList.map((item : any, index : any) => {
-                    if(item.status == "done") return <CardComponent item={item} key={index} />
+                    if(item.status == "done") return <CardComponent item={item} key={index} className="idea-card"/>
                 })
             }
         </div>

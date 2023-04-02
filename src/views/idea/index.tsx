@@ -49,7 +49,7 @@ function Idea(props: any) {
                 {
                     itemList.map((item : any, index : any) => {
                         if(item.status == "idea") return (
-                            <CardComponent item={item} key={index} className="card"/>
+                            <CardComponent item={item} key={index} className="idea-card"/>
                         )
                     })
                 }
