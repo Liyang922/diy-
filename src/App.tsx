@@ -38,6 +38,7 @@ function App(props: any) {
     setAntdLanguage()
   }, [language])
 
+  // app
   return (
     <HashRouter>
       <ConfigProvider locale={i18nLocale} componentSize={assemblySize}>
