@@ -3,7 +3,7 @@ import { getBrowserLang } from './utils'
 import { ConfigProvider } from 'antd'
 import { connect } from 'react-redux'
 import { setLanguage } from './redux/modules/global/action'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import AuthRouter from './routers/utils/authRouter'
 import Router from './routers'
 import useTheme from '../src/hooks/useTheme'
@@ -41,13 +41,13 @@ function App(props: any) {
 
   // app
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ConfigProvider locale={i18nLocale} componentSize={assemblySize}>
         <AuthRouter>
           <Router />
         </AuthRouter>
       </ConfigProvider>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
