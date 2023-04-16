@@ -8,10 +8,12 @@ const metaRouters = import.meta.glob("./modules/*.tsx"); //默认懒加载，返
 
 // * 处理routeArr
 const routeArr: RouteObject[] = [];
-for (const path in metaRouters) {
-    const mod : any = await metaRouters[path]();
-    routeArr.push(mod.default);
-}
+(async function() {
+    for (const path in metaRouters) {
+        const mod : any = await metaRouters[path]();
+        routeArr.push(mod.default);
+    }
+})();
 // console.log("routeArr", routeArr);
 
 export const rootRouter : RouteObject[] = [

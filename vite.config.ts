@@ -4,7 +4,7 @@ import viteEslint from 'vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/diyStockManage/',
+  base: '/diyStockManage/', // 资源基础路径
   // global css
   css: {
     preprocessorOptions: {
