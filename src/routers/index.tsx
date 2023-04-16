@@ -14,6 +14,7 @@ const routeArr: RouteObject[] = [];
         routeArr.push(mod.default);
     }
 })();
+
 // console.log("routeArr", routeArr);
 
 export const rootRouter : RouteObject[] = [
