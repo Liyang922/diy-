@@ -9,7 +9,7 @@ import { setToken } from "../redux/modules/global/action";
 
 const config = {
     // 默认请求地址，为vite环境变量，在.env开头文件中修改
-    baseURL: import.meta.env.VITE_API_URL as string, //'/api'
+    baseURL: import.meta.env.VITE_API_URL as string, //开发-'/api'
     // 超时时间
     timeout: 10000,
     // 跨域时允许携带凭证
