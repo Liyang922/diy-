@@ -39,6 +39,7 @@ function App(props: any) {
   }, [language])
 
 
+  // app
   return (
     <HashRouter>
       <ConfigProvider locale={i18nLocale} componentSize={assemblySize}>
