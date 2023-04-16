@@ -20,16 +20,14 @@ jobs:
       - name: checkout
 
         uses: actions/checkout@master
+        
 
-        # 安装依赖
 
-      - name: install
+      - name:install
 
         run: yarn
 
-        # 打包构建
-
-      - name: build
+      - name:build
 
         run: yarn build
 
