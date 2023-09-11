@@ -38,12 +38,14 @@ const EditableCell = ({
         inputRef.current?.focus();
       }
     }, [editing]);
+
     const toggleEdit = () => {
       setEditing(!editing);
       form.setFieldsValue({
         [dataIndex]: record[dataIndex],
       });
     };
+
     const save = async () => {
       try {
         const values = await form.validateFields();
@@ -97,7 +99,7 @@ function ExsitingStock(props : any) {
     // dataSource变化时存储到redux中
     useEffect(() => {
         setStock(dataSource);
-    }, [dataSource])
+    }, [dataSource]);
       
     // count作为key
     const [count, setCount] = useState(dataSource.length);

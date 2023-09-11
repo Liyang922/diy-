@@ -32,7 +32,7 @@ export class AxiosCanceler {
         const url = getPendingUrl(config);
         if(pendingMap.has(url)) {
             const cancel = pendingMap.get(url);
-            cancel && cancel(); //先取消请求再删除
+            cancel && cancel(); // 先取消请求再删除
             pendingMap.delete(url);
         }
     }

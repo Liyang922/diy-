@@ -19,7 +19,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function LoginForm(props: any) {
-
     const [form] = Form.useForm(); //创建 Form 实例，用于管理所有数据状态。
     const {t} = useTranslation();   
     const [loading, setLoading] = useState<boolean>(false);

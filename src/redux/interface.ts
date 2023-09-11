@@ -3,7 +3,7 @@ import { Menu } from "../api/interface";
 
 /* 主题配置 */
 export interface ThemeConfigProp {
-    primary: string;
+	primary: string;
 	isDark: boolean;
 	weakOrGray: string;
 	breadcrumb: boolean;
@@ -13,9 +13,9 @@ export interface ThemeConfigProp {
 
 /* 全局配置 */
 export interface GlobalState {
-    token: string;
-    userInfo: any;
-    assemblySize: SizeType;
+	token: string;
+	userInfo: any;
+	assemblySize: SizeType;
 	language: string;
 	themeConfig: ThemeConfigProp;
 }

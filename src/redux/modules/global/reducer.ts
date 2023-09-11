@@ -4,9 +4,9 @@ import { GlobalState } from "../../interface";
 import { SET_TOKEN, SET_LANGUAGE, SET_ASSEMBLY_SIZE, SET_THEME_CONFIG } from "../../types";
 
 const globalState : GlobalState = {
-    token: "",
-    userInfo: "",
-    assemblySize: "middle",
+	token: "",
+	userInfo: "",
+	assemblySize: "middle",
 	language: "",
 	themeConfig: {
 		// 默认 primary 主题颜色
